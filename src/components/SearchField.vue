@@ -1,42 +1,26 @@
 <template>
-    <div class="searchField">
-        <input type="text" :value="city" @input="update" class="input" :placeholder="text">
-        <p> {{city}} </p>
-    </div>
+  <div class="searchField">
+    <input type="text" :value="city" @input="update" class="input is-large" :placeholder="text">
+  </div>
 </template>
 
 <script>
-import axios from "axios";
-
-const appid = '0ec9f3609b6817dca551684e5b7d2d13';
-const apiAddress = 'https://api.openweathermap.org/data/2.5/weather';
+import { FETCH_FORECAST } from "../constants";
 
 export default {
   name: "SearchField",
-  data: () => {{
-    city: ''
-    }
+  data: () => {
+    return {
+      city: ""
+    };
   },
   props: {
     text: String
   },
   methods: {
-    update: async e => {
-        console.log(e.target.value);
-        try {
-            const response = await axios.get(`${apiAddress}?q=${e.target.value}&appid=${appid}`);
-            console.log(response);
-        }
-
-        catch (e){
-            
-        }
+    update(e) {
+      this.$store.dispatch(FETCH_FORECAST, { city: e.target.value });
     }
-
   }
 };
 </script>
-
-<style lang="sass">
-
-</style>
