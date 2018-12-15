@@ -48,14 +48,28 @@
 </template>
 
 
-<style lang="sass" scoped>
+<style lang="sass" scoped> 
+$title-color: #00d1b2
+$subtitle-color: green
+
+%title
+  font-weight: bold
+  color: $title-color
+
+
 pre
   padding: 5px 15px
 
 .container
   padding: 10px 0
 
-  h2, h4
-    font-weight: bold
+  h4
+    @extend %title
+    border: 2px solid pink
+    color: $subtitle-color
+
+  h2
+    @extend %title
+    border: 3px dashed $subtitle-color
 </style>
 

@@ -21,7 +21,7 @@ export default {
     desc() { return this.weather.weather[0].main; },
     temp() { return Math.round(this.weather.main.temp); },
     dayOfWeek() {
-      let a = new Date(this.weather.dt*1000);
+      let a = new Date(this.weather.dt*1000);//timestamp millisec.
       let days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
       return days[a.getDay()];
     
